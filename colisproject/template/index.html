@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Accueil ColisApp{% endblock %}
+
+{% block content %}
+
+<h1>Accueil de ColisApp</h1>
+<p>Bienvenue sur le site de livraison de colis !</p>
+{% if nb_colis == 0 %}
+    <p>Aucun colis à livrer</p>
+{% else %}
+    <p>Il y a {{ nb_colis }} colis à livrer</p>
+{% endif %}
+<a href="/parcels">Voir la liste des colis</a>
+<a href="/add_parcel">Ajouter un colis</a>
+<a href="/tracking">Suivre un colis</a>
+
+{% endblock %}

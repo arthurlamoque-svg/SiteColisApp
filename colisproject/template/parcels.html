@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Liste de colis{% endblock %}
+
+{% block content %}
+
+<h1>Liste de colis</h1>
+<ul>
+    {% for colis in colis_data %}
+        <li>{{ colis }}</li>
+    {% endfor %}
+</ul>
+<a href="/">Retour à la page d'accueil</a>
+{%endblock %}

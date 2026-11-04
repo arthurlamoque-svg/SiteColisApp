@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Suivi d'un colis{% endblock %}
+
+{% block content %}
+<h1>Suivi d'un colis</h1>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="tracking_number" id="tracking_number" placeholder="Numéro de suivi">
+    <button type="submit">Suivre le colis</button>
+</form>
+
+{% if parcel %}
+    <h2>Informations sur le colis</h2>
+    <p>Adresse de départ : {{ parcel.adress_dep }}</p>
+    <p>Adresse d'arrivée : {{ parcel.adress_arr }}</p>
+    <p>Poids : {{ parcel.weight }} kg</p>
+    <p>Statut : 
+        {% if parcel.status == 0 %}
+            En attente
+        {% elif parcel.status == 1 %}
+            En cours
+        {% elif parcel.status == 2 %}
+            Livré
+        {% endif %}
+    </p>
+{% elif error_message %}
+    <p>{{ error_message }}</p>
+{% endif %}
+<a href="/">Retour à la page d'accueil</a>
+{%endblock %}
